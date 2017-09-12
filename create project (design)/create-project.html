@@ -70,28 +70,31 @@
       <div class="col-md-9 tab-content">
           
         <div id="home" class="tab-pane fade in active">
-         <div class="form-title">What should we call this project?</div>
+            <div class="form-title">What should we call this project?</div>
          
-         <form class="form-group form-group-x">
-             <div class="form-check">
-                <label for="">PROJECT NAME</label>
-                <br>
-                <input class="form-con form-control form-cp" type="text" placeholder="Snapcast" maxlength="30" required>
-                <button type="submit" onclick="return validate()" class="submit-x button-toggle" data-toggle="pill" href="#menu1">NEXT</button>
-             </div>
-        </form>
+            <form id="myForm" class="form-group form-group-x">
+                <div class="form-check">
+                    <label for="">PROJECT NAME</label>
+                    <br>
+                    <input class="form-con form-control form-cp" type="text" placeholder="Snapcast" maxlength="30" required>
+                    <button type="submit" onsubmit="return validate()" class="submit-x button-toggle" data-toggle="pill" href="#menu1">NEXT</button>
+                </div>
+            </form>
         </div>
           
         <div id="menu1" class="tab-pane fade">
             <div class="form-title">What Kind of project are you looking at to build?</div>
+            <form>    
                 <div class="proj">
                     <label id="projType" class="proj-type proj-type-x">
                         <input id="check" type="checkbox" required>
 
                         <div id="projSelected" class="col-md-12 text-right fa fa-check-circle-o">
                         </div>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
+                        <div class="col-md-3">
+                            <img src="img/mobile.png" height="65">
+                        </div>
+                        <div class="col-md-9">
                             <span class="proj-title">MOBILE</span>
                             <br>
                             <span class="proj-txt">An application built to work on mobile devices. 
@@ -103,8 +106,10 @@
 
                         <div id="projSelected2" class="col-md-12 text-right fa fa-check-circle-o">
                         </div>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
+                        <div class="col-md-3">
+                            <img src="img/web.png" height="45">
+                        </div>
+                        <div class="col-md-9">
                             <span class="proj-title">WEB</span>
                             <br>
                             <span class="proj-txt">An application built and optimised to run on system 
@@ -123,7 +128,7 @@
                             <span class="proj-txt">Add platforms that are not included on this page<br><br><br></span>
                         </div>
                         <form class="form-group form-group-x text-center">
-                            <input name="platform" class="form-con form-control form-cp-x" type="text" 
+                            <input id="platform" name="platform" class="form-con form-control form-cp-x" type="text" 
                             placeholder="Type here">
                         
                         <div id="tag" class="tag">Desktop application &nbsp; <span class="times"> &times;</span></div>
@@ -140,7 +145,7 @@
             <ul class="nav nav-tabs">
                 <li class="active col-md-6 tab-title no-pad-left"><a data-toggle="tab" href="#add">ADD PROJECT MANAGER</a></li>
                 <li class="col-md-6 tab-title no-pad-left"><a data-toggle="tab" href="#hire">HIRE PROJECT MANAGER</a></li>
-              </ul>
+            </ul>
               
               <div class="tab-content no-pad-left">
 
@@ -170,8 +175,9 @@
                         <li>5</li>
                         <li class="prev-next b-l"> &nbsp; NEXT</li>
                     </ul>
-                    <form class="form-check">
+                    
                     <div class="row proj-managers">
+                        <form class="form-check">
                         <div class="proj-div b-r b-b">
                             <div class="col-md-3 no-pad">
                                 <img src="img/1.jpeg" class="avatar" height="50">
@@ -184,9 +190,7 @@
                                 <p class="proj-name">Michael Alade</p>
                                 <p class="proj-address">Lagos,Nigeria</p>
                                 <p class="proj-count">6 Projects Managed</p>
-                                
                             </label>
-                            
                         </div>
                         <div class="proj-div b-r b-b">
                             <div class="col-md-3 no-pad">
@@ -308,16 +312,15 @@
                                 
                             </label>
                         </div>
+                            
+                        </form>
                     </div>
                 </div>
-                
-              </div>
-
-              <div class="button-div">
-                    <button type="submit" class="submit submit-md" data-toggle="pill" href="#">BACK</button>
-                    <button type="submit" onclick="validate()" class="submit-x button-toggle3" data-toggle="pill" href="#menu3">NEXT</button>
+                <div class="button-div">
+                        <button type="submit" class="submit submit-md" data-toggle="pill" href="#">BACK</button>
+                        <button type="submit" onclick="validate()" class="submit-x button-toggle3" data-toggle="pill" href="#menu3">NEXT</button>
                 </div>
-            <form>
+            </div>
         </div>
           
         <div id="menu3" class="tab-pane fade">
@@ -467,8 +470,6 @@
       
         </div>
 
-</div>
-
 
 
 <script>
@@ -550,12 +551,16 @@ $('#congrat').modal({
 </script>
 
 <script>
-    $('input[name=platform]').keyup(function(){
-        if($(this).val().length)
-          $('#tag').show();
-        else
-          $('#tag').hide();
-      });
+$(document).ready(function() {
+  $("#platform").keyup(function() {
+    var x = document.getElementById('tag');
+    if($(this).val() == "") {
+      x.style.display = 'none';
+    } else {
+      x.style.display = 'block';
+    }
+  });
+});
 </script>
 
 </body>
